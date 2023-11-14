@@ -10,7 +10,7 @@ inputData.forEach(entry => {
         carriersToProcess.get(entry.carrier)?.add(entry.customerId);
     }
     else if (fauxDb.carriers.some(carrier => carrier.details.standardizedName === entry.carrier)) {
-        carriersToProcess.set(entry.carrier, new Set<string>(entry.customerId));
+        carriersToProcess.set(entry.carrier, new Set<string>([entry.customerId]));
     }
     else {
         console.warn(`skipping inout data carrier ${entry.carrier}: no config for carrier`);
@@ -30,5 +30,5 @@ Array.from(carriersToProcess.entries())
         }
     })
     .forEach(carrierToProcess => {
-
+        console.log({...carrierToProcess});
     });
