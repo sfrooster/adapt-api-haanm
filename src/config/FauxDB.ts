@@ -1,21 +1,23 @@
-{
+export const fauxDb: FauxDb = {
   "carriers": [
     {
       "id": "d6112346-9590-4f0a-b971-a344453ad1db",
       "details": {
         "name": "Mock Indemnity",
+        "standardizedName": "MOCK_INDEMNITY",
         "auth": "none",
         "url": "https://scraping-interview.onrender.com/mock_indemnity/~0"
       }
     },
     {
-        "id": "cfd74eaf-70e2-4957-aaba-a8a9528f7a01",
-        "details": {
-          "name": "Placeholder Insurance",
-          "auth": "none",
-          "url": "https://scraping-interview.onrender.com/placeholder_carrier/~0"
-        }
+      "id": "cfd74eaf-70e2-4957-aaba-a8a9528f7a01",
+      "details": {
+        "name": "Placeholder Insurance",
+        "standardizedName": "PLACEHOLDER_CARRIER",
+        "auth": "none",
+        "url": "https://scraping-interview.onrender.com/placeholder_carrier/~0"
       }
+    }
   ],
   "agencies": [
     {
@@ -34,7 +36,7 @@
                   "details": {
                     "name": "Teresa Goodwin V",
                     "carrierId": "d6112346-9590-4f0a-b971-a344453ad1db",
-                    "customer_carrier_id": "a0dfjw9a"
+                    "customerCarrierId": "a0dfjw9a"
                   }
                 }
               ]
@@ -69,4 +71,53 @@
         }
       }
   ]
+}
+
+export interface FauxDb {
+  carriers: Carrier[];
+  agencies: Agency[];
+}
+
+export interface Agency {
+  id:      string;
+  details: AgencyDetails;
+}
+
+export interface AgencyDetails {
+  name:       string;
+  agencyCode: string;
+  agents:     Agent[];
+}
+
+export interface Agent {
+  id:      string;
+  details: AgentDetails;
+}
+
+export interface AgentDetails {
+  name:      string;
+  customers: Customer[];
+}
+
+export interface Customer {
+  id:      string;
+  details: CustomerDetails;
+}
+
+export interface CustomerDetails {
+  name:                 string;
+  carrierId:            string;
+  customerCarrierId:   string;
+}
+
+export interface Carrier {
+  id:      string;
+  details: CarrierDetails;
+}
+
+export interface CarrierDetails {
+  name: string;
+  standardizedName: string;
+  auth: string;
+  url:  string;
 }
