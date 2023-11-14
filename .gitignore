@@ -1,0 +1,11 @@
+build/
+node_modules/
+test-results/
+/playwright/.auth
+playwright-report/
+/blob-report/
+/playwright/.cache/
+
+
+.DS_Store
+.vscode

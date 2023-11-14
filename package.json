@@ -1,0 +1,15 @@
+{
+  "name": "adapt-api-haanm",
+  "version": "1.0.0",
+  "main": "src/app.ts",
+  "license": "MIT",
+  "scripts": {
+    "pw:test:clean": "rm -rf ${INIT_CWD}/test-results ${INIT_CWD}/playwright-report > /dev/null"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.39.0",
+    "@types/node": "^20.9.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.2.2"
+  }
+}
