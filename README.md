@@ -20,17 +20,34 @@
 * Don't love the current "dynamic" url setup but could see adapting it after implementing auth to then go *somewhere* because we're working with the idea that it's dynamic
 
 
+## Final Thoughts
+I'm not going to say the previous 43 hours (which is how long I've been up for) haven't been especially demanding on my time (I lost all of Monday to some unexpected things I had to deal with), but I stil had the entire night, chunks of Tuesday day, and the evening up until now, so it'd be a lie to say there weren't 3+ hours in there for me to work on this. I'll set that aside.
+
+In doing my own quick retro on this - quick for your sake, but I'll be thinking about it much longer - here it is:
+
+### Went Well (maybe)
+* I new know Playwright much much better than I did before
+* I really seized on the idea of the whole process of creating a scraping workflow and integrate it "easily" intoand existing engine/platform. I analyzed the data available to me to try and figure-out what domain various ids belonged to. I consider the need for a form of universal vocabulary, comparing the two sites for differences and similarities (unconvering along the was things like the hidden SSN and how you could get some data that seemed to be on one site but missing from another), considering how I would account for things like GDPR. I considered much more than the bare minimum.
+* I learned a a couple new thngs about the DOM. especially as it pertains to querying it to extract data.
+
+### Didn't go well (or as I expected)
+* Two key reasons I opted for Playwright were:
+  * I planned to use the codegen features such that someone could accomplish a large part of scripting a scrape but running the tool against a site, click through various scenarios big and small while the tool created code including selectors (or locators) as you went, and then ideally you'd be able to take the "components" and stitch them together into a script (a function or some such) which would be made available to the engine and plugged in by adding some onfiguration
+  * I also didn't relish the idea of hand-crafting a bunch of css selectors and knew the tool could help with that (I know the evtools provide some features here but it's a litle more clunky)
+* To be fair, there are a LOT of non-testing features available in PW and I still consider it a viable option, but I think I was sunk for the following reasons in no particular order:
+  * I was careful and deliberate about setting up my project - too deliberate. I didn't want to have to go back and redo things because I rushed through setting up PW
+  * I was just a little unsure if the scope was sized as stated or if something bigger was expected, so I erred on the side of bigger, much bigger, including creating a configuration database of sort. I should've just asked (though the hours I was working did discourage me a little from asking a questiob that might notbe answed for 12 hours - but that's all on me)
+  * PW does support jQ/CSS style selectors, but they also have an "easier" mechanism. Becoming familiar with that took some time and yielded less fruit than I'd like. Especially as I discovered that similar items were implemented differently - a span here (very challenging to get PW to locate them so I could exract them), so text over there, and I'm sure there was at least one other version, if not more, but the tools didn't really offer-up an obvious easy mechanism for grabbing those and so I flailed a little trying to find a good solution rather than going down the path of long twisty pseudo elements, especially as I burned time I didn't feel I had the luxury to take a step back and see some approach I was missing.
+
+### Next steps
+* I have no illusions that this is ultimately anything but a fail, but I'm still going to submit it
+* It's a standard install, classic yarn, should be able to just clone it and run yarn. I'm almost positive I did nt run the PW install but let me check my history real quick... scratch that - I did run "yarn create playwright" and then also "yarn playwright install chromium" though I still ended-up with all the browsers.
+* cli commands I ran the most:
+  * npx ts-node src/app.ts (which runs it, but it'll chock on the second execution of one function which I'm currently guessing may have to do with a dirty context?)
+  * npx playwright codegen --target=javascript --viewport-size="1400, 1200" https://scraping-interview.onrender.com/placeholder_carrier/f02dkl4e to run codegen. You can skip the target and the url but I'd keep the viewport-size
+  * There are many other things the explore but I'm sure that's low on your priority list so....
 
 
+Good Luck!
 
-
-
-# TypeScript Boilerplate
-
-## How to use
-
-[Download Node](https://nodejs.org/en/) if you don't already have it on your machine
-
-### Scripts
-
-`yarn start`: compiles `index.ts` and runs it
+-Michael
